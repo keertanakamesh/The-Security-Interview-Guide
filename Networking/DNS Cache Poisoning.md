@@ -16,12 +16,12 @@ Attackers can poison DNS caches by impersonating DNS nameservers, making a reque
 
 DNS Cache Poisoning Process:
 <p align="center">
-  <img src="../images/dns-cache-poisoning.png" height = "300" width="500">
+  <img src="../images/dns-cache-poisoning.PNG" height = "300" width="500">
 </p>
 
 Poisoned DNS Cache:
 <p align="center">
-  <img src="../images/poisoned-cache.png" height = "300" width="350">
+  <img src="../images/poisoned-cache.PNG" height = "300" width="350">
 </p
 
 Instead of using TCP, which requires both communicating parties to perform a 'handshake' to initiate communication and verify the identity of the devices, DNS requests and responses use UDP. With UDP, there is no guarantee that a connection is open, that the recipient is ready to receive, or that the sender is who they say they are. Thus, if a DNS resolver receives a forged response, it accepts and caches the data uncritically because there is no way to verify if the information is accurate and comes from a legitimate source. 
