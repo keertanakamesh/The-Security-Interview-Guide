@@ -8,7 +8,7 @@ An origin consists of a URI scheme, domain and port number. \
 Ex: http://www.example.com:8080/\
 Here `http` is the scheme, `www.example.com` is the hostname or domain, and `8080` is the port number. 
 
-* When no port is specified, the browser defaults to port 80. 
+* When no port is specified, the browser defaults to port 80 for http and port 443 for https. 
 * The endpoints (such as /index.html/messages) are not part of the origin. 
 
 Two URLs have the same origin if the protocol, port (if specified), and host are the same for both. The following table gives examples of origin comparisons with the URL http://store.company.com/dir/page.html:
@@ -27,3 +27,19 @@ Two URLs have the same origin if the protocol, port (if specified), and host are
 When a browser sends an HTTP request from one origin to another, any cookies, including authentication session cookies, relevant to the other domain are also sent as part of the request. This means that the response will be generated within the user's session, and include any relevant data that is specific to the user. Without the same-origin policy, if you visited a malicious website, it would be able to read your emails from Gmail, private messages  from Facebook, etc. 
 Now if websites could not interact with each other, then the internet would be rather dull. How could any site interact with other sites ? How could google or facebook interact with each other and share data? This is where CORS comes into play.
 
+### What is permitted and what is blocked?
+Generally, embedding a cross-origin resource is permitted, while reading a cross-origin resource is blocked.
+
+* iframes -	Cross-origin embedding is usually permitted (depending on the X-Frame-Options directive), but cross-origin reading (such as using JavaScript to access a document in an iframe) isn't.
+* CSS	- Cross-origin CSS can be embedded using a <link> element or an @import in a CSS file. The correct Content-Type header may be required.
+* forms - Cross-origin URLs can be used as the action attribute value of form elements. A web application can write form data to a cross-origin destination.
+* images - Embedding cross-origin images is permitted. However, reading cross-origin image data (such as retrieving binary data from a cross-origin image using JavaScript) is blocked.
+* multimedia - Cross-origin video and audio can be embedded using <video> and <audio> elements.
+script	Cross-origin scripts can be embedded; however, access to certain APIs (such as cross-origin fetch requests) might be blocked.
+
+### How to prevent Clickjacking
+An attack called "clickjacking" embeds a site in an iframe and overlays transparent buttons which link to a different destination. Users are tricked into thinking they are accessing your application while sending data to attackers.
+
+To block other sites from embedding your site in an iframe, add a content security policy with `frame-ancestors` directive to the HTTP headers.
+
+Alternatively, you can add X-Frame-Options to the HTTP headers.
