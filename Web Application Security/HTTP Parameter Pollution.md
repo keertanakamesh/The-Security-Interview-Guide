@@ -22,4 +22,35 @@ In HPP, the attacker introduces multiple parameters with the same name into a si
 
 ## Mitigation
 
-All user-supplied data, which is reflected in the HTML source code of the HTTP response, should be encoded according to the context in which they are reflected. For example by using URL-encoding in attributes that input is reflected, instead of HTML entities. 
+1. Normalize Parameter Handling
+   
+Ensure the backend processes only the first occurrence or last occurrence of a repeated parameter.
+Example (Python Flask):
+```
+from flask import request
+amount = request.args.get('amount')  # Retrieves only the first occurrence
+```
+Avoid using request.args.getlist('amount') unless intended.
+
+2. Sanitize and Validate Input
+   
+* Implement strict validation on expected input values.
+* Reject requests with unexpected duplicate parameters.
+  
+3. Enforce a Web Application Firewall (WAF) Rule
+   
+Block requests containing multiple instances of the same parameter.
+
+4. Use Strong URL Parsing Libraries
+
+Different frameworks handle duplicate parameters differently. Test how your application parses them.
+Example (Node.js Express using qs library for safe parsing):
+```
+const qs = require('qs');
+let params = qs.parse('amount=1000&amount=10', { allowDots: false });
+console.log(params.amount);  // Ensures safe handling
+```
+
+5. Restrict URL Encoding Manipulation
+   
+Block encoded versions of &, =, and ; in parameters to prevent bypass attempts.
