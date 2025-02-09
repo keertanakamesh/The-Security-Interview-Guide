@@ -20,3 +20,39 @@ IDOR vulnerabilities often arise when sensitive resources are located in static 
 `https://insecure-website.com/static/12144.txt`
 
 In this situation, an attacker can simply modify the filename to retrieve a transcript created by another user and potentially obtain user credentials and other sensitive data.
+
+## Prevention
+
+1. Enforce Proper Access Control (Authorization)
+
+Implement strict role-based access control (RBAC) or attribute-based access control (ABAC) to verify who can access which resources.
+NEVER trust user-controlled input for sensitive object references.
+
+2. Use Indirect References (Object Indirection)
+
+Instead of exposing incremental numeric IDs (e.g., user IDs, order IDs), use UUIDs, hashes, or tokens.
+Example:
+```
+import uuid
+user_id = str(uuid.uuid4())  # Generates a unique ID like '550e8400-e29b-41d4-a716-446655440000'
+```
+This prevents attackers from guessing object references.
+
+3. Implement Secure Session-Based Validation
+
+Ensure users can only access objects they own. This prevents users from accessing others' data.
+
+4. Validate & Sanitize User Input
+
+Prevent ID tampering by strictly validating incoming requests.
+Avoid exposing object references in hidden fields, URLs, or cookies.
+
+5. Implement Logging and Monitoring
+
+* Log all access attempts to sensitive resources.
+* Detect and alert on unusual object access patterns.
+* Set up alerts for excessive 403 Forbidden responses or suspicious parameter changes.
+
+6. Secure API Endpoints with Proper Authorization
+
+Use JWT tokens or OAuth for API authentication. This ensures only authorized users access their data.
