@@ -1,32 +1,6 @@
 # Application Security Interview Questions
 
-## Setting up the context
-You can assess yourself by checking how many of these application security interview questions are easy for you, how many need finetuning and how many are yet to learn and master. Remember, every one of us is learning and a question is easy for you doesn’t mean it’s the same for everyone. However, it depends upon the role, and expectations set by the hiring manager and the interviewer.
-
-The question might look straightforward but your answer speaks more about your experience and hands-on in this domain. Try to analyze the question and answer honestly. 
-
-Many questions might not be for your experience or role as I am sharing mixed questions asked for various roles in the Application Security domain. 
-
-Also, I am not sharing questions on any programming language-specific or even programming-based security questions. That can possibly be another series of questions in my next release.
-
-### First thing first
-This interview question set is mostly for defensive roles as compared to offensive roles which are mainly called “Penetration Testing or Web Security (sometimes it’s used interchangeably) ”. I will concentrate more on how an application is developed, maintained, and deployed and how as a security engineer you would help an engineering team to overcome security challenges.
-
-
-### Second important note
-I am listing questions based on a few criteria:
-
-1. Common to everyone who is in this domain or trying to enter this domain.
-2. Some questions would be theoretical and you can consider those questions as a starting point to check the candidate’s overall knowledge
-3. Some questions are for senior professionals
-4. Some questions may have different answers depending on seniority level
-5. Some questions can be to check your domain and leadership skills in this domain
-
-**_One more thing_**
-
-If you are new to this domain or planning to make a career in cybersecurity. You should see the study plan before delving into interview questions.
-
-__They are:__
+## Study Plan
 
 1. [Common Skills Study Plan](https://jassics.medium.com/study-plan-to-learn-common-skills-in-cybersecurity-865d15e28c46) that you can finish within 3 months
 2. [20 Essential books that you should read from security world](https://jassics.medium.com/20-essential-books-for-every-security-pros-journey-cfba7033bb1c)
@@ -52,7 +26,7 @@ Soft skills, team player, presentation skills, communication skills are out of t
 2. How does TCP 3-way handshake work?
 3. Why is TLS important in cybersecurity and can you [explain the use of TLS in detail](https://kartik-chauhan.medium.com/demystifying-tls-f049b46eb2b3) for a website?
 4. How SSL/TLS makes my content secured over the internet?
-5. [What happens when you type google.com in your browser?](https://kevinkiruri.medium.com/what-happens-when-you-type-google-com-in-your-browser-and-press-enter-979955e31baf)
+5. [What happens when you type google.com in your browser?](https://aws.amazon.com/blogs/mobile/what-happens-when-you-type-a-url-into-your-browser/)
 6. What’s the difference between SAST and SCA?
 7. What is SQLi and how would you prevent/mitigate it?
 8. Explain XSS with a few examples and how it can be avoided in the current software world.
@@ -63,6 +37,23 @@ Soft skills, team player, presentation skills, communication skills are out of t
 1. [Explain CORS, SOP, and CSP from security point of view](https://medium.com/@zhaojunemail/sop-cors-csrf-and-xss-simply-explained-with-examples-af6119156726)
 2. How is CSRF dangerous for an application and what must be done to prevent CSRF in an application?
 3. Explain the concept of input validation and why it is crucial for secure coding. Provide examples.
+
+Input validation is the process of verifying and sanitizing user inputs before processing them to prevent security vulnerabilities, application errors, and unexpected behavior. It ensures that input data adheres to expected formats, types, and constraints. Poor input validation can lead to critical security vulnerabilities, including:
+
+* Injection attacks (e.g., SQL Injection, Command Injection)
+* Cross-Site Scripting (XSS)
+* Buffer overflows
+* Broken access control
+* Denial-of-service (DoS) attacks
+
+Types of Input Validation -
+* Allowlist (Whitelist) Validation - Only accept predefined, expected values. Example: Restricting input to a set of valid country codes.
+* Denylist (Blacklist) Validation - Reject known bad values or patterns (Less effective than allowlist validation).
+* Data Type Validation - Ensure the input is of the correct type (e.g., integer, string, email).
+* Length Validation - Set minimum and maximum lengths to prevent buffer overflows or excessive input.
+* Format Validation - Use regex patterns or specific rules to enforce expected formats (e.g., email, phone number).
+* Sanitization & Encoding - Remove or escape potentially harmful characters (e.g., HTML encoding to prevent XSS).
+   
 4. How do you approach secure error handling and logging in an application?
 5. Discuss the role of encryption in secure coding and some best practices for implementing it.
 6. What are some best practices for managing secrets and sensitive information in code?
